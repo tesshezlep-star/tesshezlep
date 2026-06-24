@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f6efe4;
+  --paper-deep: #eadfce;
+  --ink: #241b16;
+  --body: #483b34;
+  --muted: #7a6b61;
+  --rose: #d7a1a6;
+  --red: #a5382f;
+  --rule: rgba(36, 27, 22, 0.18);
+  --veil: rgba(255, 252, 246, 0.64);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-rose: var(--rose);
+  --color-red: var(--red);
+  --font-serif: var(--font-cormorant);
+  --font-heading: var(--font-libre);
+}
+
+body {
+  background: linear-gradient(180deg, var(--paper), #f8f2e9 46%, #efe4d5);
+  color: var(--body);
+  font-family: var(--font-serif), Georgia, serif;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: 2px;
+}
+
+/* Page transition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.page-enter {
+  animation: fadeIn 0.42s ease;
+}
+
+/* Credit list grid */
+.credit-row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 0.5px solid var(--rule);
+}
+
+.credit-row:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 640px) {
+  .credit-row {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}
+
+/* Gallery masonry */
+.gallery-grid {
+  column-count: 3;
+  column-gap: 12px;
+}
+
+.gallery-grid img {
+  break-inside: avoid;
+}
+
+@media (max-width: 800px) {
+  .gallery-grid {
+    column-count: 2;
+    column-gap: 8px;
+  }
+}
+
+@media (max-width: 440px) {
+  .gallery-grid {
+    column-count: 1;
+  }
+}
