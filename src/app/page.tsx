@@ -117,26 +117,38 @@ export default function Home() {
                     <br />
                     Hezlep
                   </h1>
-                  <p
-                    className="text-[clamp(18px,2.3vw,27px)] italic text-[--ink] leading-[1.35] tracking-[-0.02em] mb-1"
-                    style={{
-                      fontFamily:
-                        "var(--font-libre), Baskerville, Georgia, serif",
-                    }}
-                  >
-                    English reserve meets French sensuality
-                    <br className="hidden md:block" /> meets New York theater girl.
-                  </p>
                   <p className="text-[13px] tracking-[0.16em] uppercase text-[--muted] mt-2 mb-5">
                     Based in New York
                   </p>
 
-                  <blockquote className="text-[19px] md:text-[20px] leading-[1.65] border-l border-[--red] pl-4 text-[--body] max-w-[470px] m-0 mx-auto md:mx-0 bg-gradient-to-r from-white/25 to-transparent text-left">
-                    The process of acting feels like the only consistent and most
-                    beautiful pathway to accessing my heart and truest desires. It
-                    reminds me that I exist&mdash;and, in turn, I think it reminds
-                    others that they exist, too.
-                  </blockquote>
+                  <div className="text-[17px] md:text-[18px] leading-[1.75] text-[--body] max-w-[500px] mx-auto md:mx-0 text-left space-y-4">
+                    <p>
+                      I&apos;m an actress and writer from southern California. I
+                      currently live in Brooklyn. My play, &ldquo;My Mother Tap
+                      Dancing on Acid&rdquo; is currently in its workshop
+                      process&hellip;
+                    </p>
+                    <p>
+                      I&apos;m confused a lot of the time, but I have exquisite
+                      taste and know how to host a really fabulous party, where I
+                      bring together a versatile spread of personalities and
+                      sensibilities. I treasure my acting class, my friendships,
+                      and my boyfriend, George. I also love eating alone at
+                      restaurants, the film &ldquo;La Chimera,&rdquo; being
+                      disarming, and a good sweat&ndash;yes, I love pilates and
+                      hot yoga and have zero shame about this.
+                    </p>
+                    <p>
+                      I used to be a dilettante, but have recently rebranded as a
+                      renaissance woman.
+                    </p>
+                    <p>
+                      I studied theater and narrative studies at University of
+                      Southern California, and graduated from Chapman University
+                      with a BFA in creative writing. I currently train with David
+                      Gideon in New York City.
+                    </p>
+                  </div>
 
                   <div className="flex gap-3 flex-wrap mt-5 justify-center md:justify-start">
                     <button
@@ -166,7 +178,7 @@ export default function Home() {
               {/* Gallery */}
               <div className="mt-16">
                 <p className="italic text-[12.5px] tracking-[0.22em] uppercase text-[--muted] mb-5 text-center">
-                  &mdash; selected images &mdash;
+                  &mdash; Gallery &mdash;
                 </p>
                 <div className="gallery-grid">
                   {[
@@ -188,6 +200,18 @@ export default function Home() {
                     />
                   ))}
                 </div>
+
+                {/* Reel */}
+                <div className="mt-16">
+                  <p className="italic text-[12.5px] tracking-[0.22em] uppercase text-[--muted] mb-5 text-center">
+                    &mdash; Reel &mdash;
+                  </p>
+                  <div className="relative aspect-video w-full max-w-[800px] mx-auto border border-[--rule] bg-[--paper-deep] flex items-center justify-center">
+                    <p className="text-[--muted] italic text-[15px]">
+                      Compilation reel coming soon
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -206,15 +230,6 @@ export default function Home() {
               >
                 Acting
               </h2>
-
-              <p className="text-[21px] text-[--ink] mb-4">
-                Theatre, film, and new work development.
-              </p>
-              <p className="text-[18px] leading-[1.75] mb-8">
-                Tess is drawn to stories that explore longing, humor,
-                contradiction, and the complicated ways people try&mdash;and
-                fail&mdash;to connect with one another.
-              </p>
 
               {/* Theatre Credits */}
               <h3 className="text-[22px] font-medium italic text-[--ink] mt-8 mb-3">
@@ -270,6 +285,11 @@ export default function Home() {
                     role: "Short Film",
                     place: "Chapman University",
                   },
+                  {
+                    title: "Green Tomato",
+                    role: "Student Film",
+                    place: "Chapman University",
+                  },
                 ].map((c) => (
                   <div key={c.title} className="credit-row">
                     <span className="text-[--ink] italic">{c.title}</span>
@@ -289,10 +309,11 @@ export default function Home() {
                 {[
                   { text: "T. Schreiber Studio, New York", bold: true },
                   { text: "Advanced Shakespeare \u2014 Page Clements" },
-                  { text: "Scene Study \u2014 Tommy Buck" },
                   {
                     text: "Create Your Own Work Fellowship \u2014 Rivka Rivera",
                   },
+                  { text: "\u201CThe Method\u201D Acting Intensive \u2014 David Gideon" },
+                  { text: "Columbia University, Writing for Film, Theater, & Television Workshop" },
                   { text: "Advanced Improv Inc. \u2014 Chapman University" },
                 ].map((t) => (
                   <li
@@ -337,18 +358,6 @@ export default function Home() {
                 Writing
               </h2>
 
-              <p className="text-[21px] text-[--ink] mb-6">
-                Plays, essays, short stories, and works in progress.
-              </p>
-
-              <p className="text-[18px] leading-[1.75] mb-8">
-                She holds a BFA in Creative Writing from Chapman University and
-                studied Narrative Studies at the University of Southern
-                California. Her writing lives in the same territory as her
-                acting&mdash;longing, humor, the shapes people make when they
-                think no one is watching.
-              </p>
-
               <ul className="list-none p-0 m-0 text-center">
                 {["Plays", "Essays", "Short Stories"].map((g) => (
                   <li
@@ -373,7 +382,7 @@ export default function Home() {
                 >
                   Substack
                 </a>
-                , where future dispatches will live.
+                .
               </div>
             </div>
           </div>
@@ -394,8 +403,7 @@ export default function Home() {
               </h2>
 
               <p className="text-center italic text-[--muted] text-[16px] mb-6">
-                For acting, writing, collaborations, dinner invitations, or
-                general correspondence.
+                For acting, writing, collaborations&hellip; or to simply befriend me:
               </p>
 
               <div className="grid gap-3 max-w-[390px] mx-auto text-center">
