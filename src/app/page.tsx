@@ -182,11 +182,18 @@ export default function Home() {
                 </p>
                 <div className="gallery-grid">
                   {[
-                    { src: "/images/placeholder-1.jpg", alt: "Portrait 1" },
-                    { src: "/images/placeholder-2.jpg", alt: "Portrait 2" },
-                    { src: "/images/placeholder-3.jpg", alt: "Portrait 3" },
-                    { src: "/images/placeholder-4.jpg", alt: "Portrait 4" },
-                    { src: "/images/placeholder-5.jpg", alt: "Portrait 5" },
+                    { src: "/images/gallery-01.jpg", alt: "Tess Hezlep at Fanelli's" },
+                    { src: "/images/gallery-02.jpg", alt: "Editorial shoot" },
+                    { src: "/images/gallery-03.jpg", alt: "Rooftop portrait" },
+                    { src: "/images/gallery-04.jpg", alt: "Tess in NYC" },
+                    { src: "/images/gallery-05.jpg", alt: "Fanelli Cafe, New York" },
+                    { src: "/images/gallery-06.jpg", alt: "Tess at Fanelli's" },
+                    { src: "/images/gallery-07.jpg", alt: "In the park" },
+                    { src: "/images/gallery-08.jpg", alt: "Strawberry detail" },
+                    { src: "/images/gallery-09.jpg", alt: "Little Tess" },
+                    { src: "/images/gallery-10.jpg", alt: "Car window reflection" },
+                    { src: "/images/gallery-11.jpg", alt: "Friends in the park" },
+                    { src: "/images/gallery-12.jpg", alt: "Paris cafe" },
                   ].map((img) => (
                     <Image
                       key={img.src}
