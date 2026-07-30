@@ -33,6 +33,13 @@ export default function Home() {
           start: "top top",
           end: "bottom bottom",
           scrub: 0.6,
+          onUpdate: (self) => {
+            if (self.progress >= 0.99) {
+              gsap.set(headlineRef.current, { opacity: 0 });
+              gsap.set(bioRef.current, { opacity: 1, y: 0 });
+              self.kill();
+            }
+          },
         },
       });
 
@@ -162,9 +169,6 @@ export default function Home() {
                         ref={headlineRef}
                         className="md:absolute md:inset-0 md:flex md:flex-col md:justify-center"
                       >
-                        <p className="text-[12px] tracking-[0.28em] uppercase text-[--red] mb-4">
-                          Actor &middot; Writer &middot; Devoted Hostess
-                        </p>
                         <h1
                           className="text-[clamp(42px,6vw,72px)] font-normal tracking-[-0.055em] text-[--ink] m-0 mb-1.5 leading-[0.92]"
                           style={{
@@ -172,12 +176,17 @@ export default function Home() {
                               "var(--font-libre), Baskerville, 'Times New Roman', serif",
                           }}
                         >
-                          Tess Kennedy
+                          Tess
+                          <br />
+                          Kennedy
                           <br />
                           Hezlep
                         </h1>
-                        <p className="text-[13px] tracking-[0.16em] uppercase text-[--muted] mt-2">
+                        <p className="text-[13px] tracking-[0.16em] uppercase text-[--body] mt-3">
                           New York, NY
+                        </p>
+                        <p className="text-[12px] tracking-[0.28em] uppercase text-[--body] mt-1.5">
+                          Actor &middot; Writer &middot; Devoted Hostess
                         </p>
                       </div>
 
