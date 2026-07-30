@@ -30,31 +30,23 @@ export default function Home() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: heroSectionRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.6,
-          onUpdate: (self) => {
-            if (self.progress >= 0.99) {
-              gsap.set(headlineRef.current, { opacity: 0 });
-              gsap.set(bioRef.current, { opacity: 1, y: 0 });
-              self.kill();
-            }
-          },
+          start: "8% top",
+          toggleActions: "play none none none",
         },
       });
 
       tl.to(headlineRef.current, {
         opacity: 0,
         y: -40,
-        duration: 0.4,
+        duration: 0.5,
         ease: "power2.in",
       });
 
       tl.fromTo(
         bioRef.current,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-        0.3
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+        0.2
       );
     }, heroSectionRef);
 
