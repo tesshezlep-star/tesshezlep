@@ -1,7 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Page = "home" | "acting" | "writing" | "contact";
 
@@ -9,10 +13,46 @@ export default function Home() {
   const [activePage, setActivePage] = useState<Page>("home");
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
+  const bioRef = useRef<HTMLDivElement>(null);
+
   const go = useCallback((page: Page) => {
     setActivePage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  useEffect(() => {
+    if (activePage !== "home") return;
+    if (window.innerWidth < 768) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroSectionRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.6,
+        },
+      });
+
+      tl.to(headlineRef.current, {
+        opacity: 0,
+        y: -40,
+        duration: 0.4,
+        ease: "power2.in",
+      });
+
+      tl.fromTo(
+        bioRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        0.3
+      );
+    }, heroSectionRef);
+
+    return () => ctx.revert();
+  }, [activePage]);
 
   return (
     <>
@@ -95,123 +135,139 @@ export default function Home() {
         {/* ============ HOME ============ */}
         {activePage === "home" && (
           <div className="page-enter">
-            <div className="max-w-[1120px] mx-auto px-5 py-14 md:py-16">
-              {/* Hero */}
-              <div className="grid md:grid-cols-[minmax(300px,480px)_minmax(0,1fr)] gap-[clamp(2rem,5vw,5rem)] items-center">
-                {/* Portrait */}
-                <div className="relative max-w-[250px] md:max-w-none mx-auto md:mx-0">
-                  <div className="absolute inset-[18px_-18px_-18px_18px] bg-[--rose] -z-10 opacity-40" />
-                  <div className="relative aspect-[4/5.15] w-full overflow-hidden border border-[--rule] shadow-[0_22px_55px_rgba(36,27,22,0.13)]">
-                    <Image
-                      src="/images/hero.jpg"
-                      alt="Tess Hezlep"
-                      fill
-                      priority
-                      className="object-cover object-center"
-                      sizes="(max-width: 768px) 250px, 410px"
-                    />
-                  </div>
-                </div>
+            {/* Hero — tall on desktop for scroll room */}
+            <div ref={heroSectionRef} className="relative md:min-h-[220vh]">
+              <div className="md:sticky md:top-[57px] md:h-[calc(100vh-57px)]">
+                <div className="max-w-[1120px] mx-auto px-5 py-14 md:py-0 h-full">
+                  <div className="grid md:grid-cols-[minmax(300px,480px)_minmax(0,1fr)] gap-[clamp(2rem,5vw,5rem)] items-center h-full">
+                    {/* Portrait */}
+                    <div className="relative max-w-[250px] md:max-w-none mx-auto md:mx-0">
+                      <div className="absolute inset-[18px_-18px_-18px_18px] bg-[--rose] -z-10 opacity-40" />
+                      <div className="relative aspect-[4/5.15] w-full overflow-hidden border border-[--rule] shadow-[0_22px_55px_rgba(36,27,22,0.13)]">
+                        <Image
+                          src="/images/hero.jpg"
+                          alt="Tess Kennedy Hezlep"
+                          fill
+                          priority
+                          className="object-cover object-center"
+                          sizes="(max-width: 768px) 250px, 480px"
+                        />
+                      </div>
+                    </div>
 
-                {/* Copy */}
-                <div className="text-center md:text-left">
-                  <p className="text-[12px] tracking-[0.28em] uppercase text-[--red] mb-4">
-                    Actor &middot; Writer &middot; Devoted Hostess
-                  </p>
-                  <h1
-                    className="text-[clamp(42px,6vw,72px)] font-normal tracking-[-0.055em] text-[--ink] m-0 mb-1.5 leading-[0.92]"
-                    style={{
-                      fontFamily:
-                        "var(--font-libre), Baskerville, 'Times New Roman', serif",
-                    }}
-                  >
-                    Tess Kennedy
-                    <br />
-                    Hezlep
-                  </h1>
-                  <p className="text-[13px] tracking-[0.16em] uppercase text-[--muted] mt-2 mb-5">
-                    New York, NY
-                  </p>
+                    {/* Right column — two overlapping layers on desktop */}
+                    <div className="relative text-center md:text-left">
+                      {/* Layer 1: Headline (visible on load, fades out on scroll) */}
+                      <div
+                        ref={headlineRef}
+                        className="md:absolute md:inset-0 md:flex md:flex-col md:justify-center"
+                      >
+                        <p className="text-[12px] tracking-[0.28em] uppercase text-[--red] mb-4">
+                          Actor &middot; Writer &middot; Devoted Hostess
+                        </p>
+                        <h1
+                          className="text-[clamp(42px,6vw,72px)] font-normal tracking-[-0.055em] text-[--ink] m-0 mb-1.5 leading-[0.92]"
+                          style={{
+                            fontFamily:
+                              "var(--font-libre), Baskerville, 'Times New Roman', serif",
+                          }}
+                        >
+                          Tess Kennedy
+                          <br />
+                          Hezlep
+                        </h1>
+                        <p className="text-[13px] tracking-[0.16em] uppercase text-[--muted] mt-2">
+                          New York, NY
+                        </p>
+                      </div>
 
-                  <div className="text-[17px] md:text-[18px] leading-[1.75] text-[--body] max-w-[500px] mx-auto md:mx-0 text-left space-y-4">
-                    <p>
-                      Tess is an actress and writer from southern California. She
-                      currently lives in Brooklyn. Her play, &ldquo;My Mother Tap
-                      Dancing on Acid&rdquo; is currently in its workshop
-                      process&hellip;
-                    </p>
-                    <p>
-                      She has exquisite taste, and frequently hosts really fabulous
-                      dinner parties, where she brings together an unlikely crew of
-                      personalities and sensibilities. &ldquo;People typically leave
-                      feeling like they&apos;ve made a new friend,&rdquo; wrote
-                      George Wildridge, a culture critic and writer at the New York
-                      Times.
-                    </p>
-                    <p>
-                      She used to be a dilettante, but has recently rebranded as a
-                      renaissance woman.
-                    </p>
-                    <p>
-                      She studied theater and narrative studies at University of
-                      Southern California, and graduated from Chapman University
-                      with a BFA in creative writing.
-                    </p>
+                      {/* Layer 2: Bio (hidden on load, fades in on scroll) — desktop only overlay */}
+                      <div
+                        ref={bioRef}
+                        className="mt-6 md:mt-0 md:absolute md:inset-0 md:flex md:flex-col md:justify-center md:opacity-0"
+                      >
+                        <div className="text-[17px] md:text-[18px] leading-[1.75] text-[--body] max-w-[500px] mx-auto md:mx-0 text-left space-y-4">
+                          <p>
+                            Tess is an actress and writer from southern California.
+                            She currently lives in Brooklyn. Her play, &ldquo;My
+                            Mother Tap Dancing on Acid&rdquo; is currently in its
+                            workshop process&hellip;
+                          </p>
+                          <p>
+                            She has exquisite taste, and frequently hosts really
+                            fabulous dinner parties, where she brings together an
+                            unlikely crew of personalities and sensibilities.
+                            &ldquo;People typically leave feeling like they&apos;ve
+                            made a new friend,&rdquo; wrote George Wildridge, a
+                            culture critic and writer at the New York Times.
+                          </p>
+                          <p>
+                            She used to be a dilettante, but has recently rebranded
+                            as a renaissance woman.
+                          </p>
+                          <p>
+                            She studied theater and narrative studies at University
+                            of Southern California, and graduated from Chapman
+                            University with a BFA in creative writing.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Gallery */}
+            {/* Gallery */}
+            <div className="max-w-[1120px] mx-auto px-5 py-16">
+              <p className="italic text-[12.5px] tracking-[0.22em] uppercase text-[--muted] mb-5 text-center">
+                &mdash; Gallery &mdash;
+              </p>
+              <div className="gallery-grid">
+                {[
+                  { src: "/images/gallery-01.jpg", alt: "Tess Hezlep at Fanelli's" },
+                  { src: "/images/gallery-02.jpg", alt: "Editorial shoot" },
+                  { src: "/images/gallery-03.jpg", alt: "Rooftop portrait" },
+                  { src: "/images/gallery-04.jpg", alt: "Tess in NYC" },
+                  { src: "/images/gallery-05.jpg", alt: "Fanelli Cafe, New York" },
+                  { src: "/images/gallery-06.jpg", alt: "Tess at Fanelli's" },
+                  { src: "/images/gallery-07.jpg", alt: "In the park" },
+                  { src: "/images/gallery-08.jpg", alt: "Strawberry detail" },
+                  { src: "/images/gallery-09.jpg", alt: "Little Tess" },
+                  { src: "/images/gallery-10.jpg", alt: "Car window reflection" },
+                  { src: "/images/gallery-11.jpg", alt: "Friends in the park" },
+                  { src: "/images/gallery-12.jpg", alt: "Paris cafe" },
+                ].map((img) => (
+                  <Image
+                    key={img.src}
+                    src={img.src}
+                    alt={img.alt}
+                    width={600}
+                    height={900}
+                    className="w-full block mb-3 border border-[--rule] cursor-zoom-in hover:opacity-90 transition-opacity"
+                    sizes="(max-width: 440px) 100vw, (max-width: 800px) 50vw, 33vw"
+                    onClick={() => setLightboxSrc(img.src)}
+                  />
+                ))}
+              </div>
+
+              {/* Interviews */}
               <div className="mt-16">
                 <p className="italic text-[12.5px] tracking-[0.22em] uppercase text-[--muted] mb-5 text-center">
-                  &mdash; Gallery &mdash;
+                  &mdash; Interviews &mdash;
                 </p>
-                <div className="gallery-grid">
-                  {[
-                    { src: "/images/gallery-01.jpg", alt: "Tess Hezlep at Fanelli's" },
-                    { src: "/images/gallery-02.jpg", alt: "Editorial shoot" },
-                    { src: "/images/gallery-03.jpg", alt: "Rooftop portrait" },
-                    { src: "/images/gallery-04.jpg", alt: "Tess in NYC" },
-                    { src: "/images/gallery-05.jpg", alt: "Fanelli Cafe, New York" },
-                    { src: "/images/gallery-06.jpg", alt: "Tess at Fanelli's" },
-                    { src: "/images/gallery-07.jpg", alt: "In the park" },
-                    { src: "/images/gallery-08.jpg", alt: "Strawberry detail" },
-                    { src: "/images/gallery-09.jpg", alt: "Little Tess" },
-                    { src: "/images/gallery-10.jpg", alt: "Car window reflection" },
-                    { src: "/images/gallery-11.jpg", alt: "Friends in the park" },
-                    { src: "/images/gallery-12.jpg", alt: "Paris cafe" },
-                  ].map((img) => (
-                    <Image
-                      key={img.src}
-                      src={img.src}
-                      alt={img.alt}
-                      width={600}
-                      height={900}
-                      className="w-full block mb-3 border border-[--rule] cursor-zoom-in hover:opacity-90 transition-opacity"
-                      sizes="(max-width: 440px) 100vw, (max-width: 800px) 50vw, 33vw"
-                      onClick={() => setLightboxSrc(img.src)}
-                    />
-                  ))}
-                </div>
-
-                {/* Interviews */}
-                <div className="mt-16">
-                  <p className="italic text-[12.5px] tracking-[0.22em] uppercase text-[--muted] mb-5 text-center">
-                    &mdash; Interviews &mdash;
-                  </p>
-                  <div className="max-w-[800px] mx-auto space-y-4">
-                    <iframe
-                      style={{ borderRadius: "12px" }}
-                      src="https://open.spotify.com/embed/show/2g6xpGERssgYAX0uMgK9zl?utm_source=generator&theme=0"
-                      width="100%"
-                      height="352"
-                      frameBorder="0"
-                      allowFullScreen
-                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                      loading="lazy"
-                      title="Burn the It Girl on Spotify"
-                    />
-                  </div>
+                <div className="max-w-[800px] mx-auto space-y-4">
+                  <iframe
+                    style={{ borderRadius: "12px" }}
+                    src="https://open.spotify.com/embed/show/2g6xpGERssgYAX0uMgK9zl?utm_source=generator&theme=0"
+                    width="100%"
+                    height="352"
+                    frameBorder="0"
+                    allowFullScreen
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    title="Burn the It Girl on Spotify"
+                  />
                 </div>
               </div>
             </div>
