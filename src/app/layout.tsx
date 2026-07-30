@@ -17,17 +17,17 @@ const libre = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
-  title: "Tess Hezlep",
+  title: "Tess Kennedy Hezlep",
   description:
-    "Tess Hezlep is an actor, writer, and devoted hostess based in New York.",
+    "Tess Kennedy Hezlep is an actor, writer, and devoted hostess based in New York.",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Tess Hezlep",
+    title: "Tess Kennedy Hezlep",
     description:
       "Actor, writer, and devoted hostess based in New York.",
-    siteName: "Tess Hezlep",
+    siteName: "Tess Kennedy Hezlep",
     type: "website",
   },
 };

@@ -23,7 +23,7 @@ export default function Home() {
           className="font-[--font-libre] text-[13px] leading-none tracking-[0.24em] uppercase text-[--ink] cursor-pointer bg-none border-none whitespace-nowrap py-1.5 font-normal"
           style={{ fontFamily: "var(--font-libre), Baskerville, Georgia, serif" }}
         >
-          Tess Hezlep
+          Tess Kennedy Hezlep
         </button>
 
         <nav className="flex gap-5 items-center flex-wrap justify-end">
@@ -50,31 +50,43 @@ export default function Home() {
             </button>
           ))}
 
-          {/* Social links in nav */}
+          {/* Social icons */}
           <span className="hidden md:inline text-[--rule] select-none">|</span>
           <a
             href="https://www.instagram.com/medicine_babyy/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[13px] tracking-[0.1em] text-[--muted] hover:text-[--ink] transition-colors no-underline border-none"
+            className="text-[--muted] hover:text-[--ink] transition-colors"
+            aria-label="Instagram"
           >
-            ig
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           </a>
           <a
             href="https://www.backstage.com/u/tess-hezlep/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[13px] tracking-[0.1em] text-[--muted] hover:text-[--ink] transition-colors no-underline border-none"
+            className="text-[--muted] hover:text-[--ink] transition-colors"
+            aria-label="Backstage"
           >
-            backstage
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h7c1.7 0 3.1.6 4.1 1.6S18.7 7.8 18.7 9.4c0 1.2-.3 2.2-1 3-.7.9-1.6 1.4-2.7 1.6l4.5 6H16l-4-5.6H9.5V20H6V4zm3.5 3v4.2h3.2c.8 0 1.4-.2 1.9-.7s.7-1 .7-1.7c0-.8-.2-1.3-.7-1.8s-1.1-.7-1.9-.7H9.5z"/></svg>
           </a>
           <a
             href="https://substack.com/@tess514709"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[13px] tracking-[0.1em] text-[--muted] hover:text-[--ink] transition-colors no-underline border-none"
+            className="text-[--muted] hover:text-[--ink] transition-colors"
+            aria-label="Substack"
           >
-            substack
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v2.4H3V3zm0 4.2h18v2.4H3V7.2zM3 11.4h18v9.6l-9-5.1-9 5.1v-9.6z"/></svg>
+          </a>
+          <a
+            href="https://open.spotify.com/show/2g6xpGERssgYAX0uMgK9zl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[--muted] hover:text-[--ink] transition-colors"
+            aria-label="Spotify"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 14.36c-.2.3-.56.4-.86.2-2.36-1.44-5.33-1.77-8.83-.97-.34.08-.67-.14-.75-.47-.08-.34.13-.67.47-.75 3.83-.87 7.12-.5 9.77 1.13.3.18.4.56.2.86zm1.23-2.72c-.24.38-.76.5-1.14.24-2.7-1.66-6.82-2.14-10.02-1.17-.4.12-.82-.1-.94-.5-.12-.4.1-.82.5-.94 3.65-1.1 8.18-.57 11.3 1.33.38.24.5.76.3 1.14v-.1zm.1-2.82C14.7 8.62 9.38 8.44 6.32 9.34c-.48.14-.98-.13-1.12-.6-.14-.48.13-.98.6-1.12 3.52-1.04 9.38-.84 13.08 1.34.44.26.6.84.34 1.28-.26.44-.84.58-1.28.34l.03-.02z"/></svg>
           </a>
         </nav>
       </header>
@@ -115,62 +127,38 @@ export default function Home() {
                   >
                     Tess
                     <br />
+                    Kennedy
+                    <br />
                     Hezlep
                   </h1>
                   <p className="text-[13px] tracking-[0.16em] uppercase text-[--muted] mt-2 mb-5">
-                    Based in New York
+                    New York, NY
                   </p>
 
                   <div className="text-[17px] md:text-[18px] leading-[1.75] text-[--body] max-w-[500px] mx-auto md:mx-0 text-left space-y-4">
                     <p>
-                      I&apos;m an actress and writer from southern California. I
-                      currently live in Brooklyn. My play, &ldquo;My Mother Tap
+                      Tess is an actress and writer from southern California. She
+                      currently lives in Brooklyn. Her play, &ldquo;My Mother Tap
                       Dancing on Acid&rdquo; is currently in its workshop
                       process&hellip;
                     </p>
                     <p>
-                      I&apos;m confused a lot of the time, but I have exquisite
-                      taste and know how to host a really fabulous party, where I
-                      bring together a versatile spread of personalities and
-                      sensibilities. I treasure my acting class, my friendships,
-                      and my boyfriend, George. I also love eating alone at
-                      restaurants, the film &ldquo;La Chimera,&rdquo; being
-                      disarming, and a good sweat&ndash;yes, I love pilates and
-                      hot yoga and have zero shame about this.
+                      She has exquisite taste, and frequently hosts really fabulous
+                      dinner parties, where she brings together an unlikely crew of
+                      personalities and sensibilities. &ldquo;People typically leave
+                      feeling like they&apos;ve made a new friend,&rdquo; wrote
+                      George Wildridge, a culture critic and writer at the New York
+                      Times.
                     </p>
                     <p>
-                      I used to be a dilettante, but have recently rebranded as a
+                      She used to be a dilettante, but has recently rebranded as a
                       renaissance woman.
                     </p>
                     <p>
-                      I studied theater and narrative studies at University of
+                      She studied theater and narrative studies at University of
                       Southern California, and graduated from Chapman University
-                      with a BFA in creative writing. I currently train with David
-                      Gideon in New York City.
+                      with a BFA in creative writing.
                     </p>
-                  </div>
-
-                  <div className="flex gap-3 flex-wrap mt-5 justify-center md:justify-start">
-                    <button
-                      onClick={() => go("acting")}
-                      className="border border-[--rule] rounded-full px-4 py-2 text-[14px] italic bg-white/25 text-[--ink] cursor-pointer hover:border-[--red] hover:bg-white/40 transition-all"
-                    >
-                      Acting
-                    </button>
-                    <button
-                      onClick={() => go("writing")}
-                      className="border border-[--rule] rounded-full px-4 py-2 text-[14px] italic bg-white/25 text-[--ink] cursor-pointer hover:border-[--red] hover:bg-white/40 transition-all"
-                    >
-                      Writing
-                    </button>
-                    <a
-                      href="https://www.backstage.com/u/tess-hezlep/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="border border-[--rule] rounded-full px-4 py-2 text-[14px] italic bg-white/25 text-[--ink] no-underline hover:border-[--red] hover:bg-white/40 transition-all"
-                    >
-                      Backstage
-                    </a>
                   </div>
                 </div>
               </div>
@@ -208,15 +196,23 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* Reel */}
+                {/* Interviews */}
                 <div className="mt-16">
                   <p className="italic text-[12.5px] tracking-[0.22em] uppercase text-[--muted] mb-5 text-center">
-                    &mdash; Reel &mdash;
+                    &mdash; Interviews &mdash;
                   </p>
-                  <div className="relative aspect-video w-full max-w-[800px] mx-auto border border-[--rule] bg-[--paper-deep] flex items-center justify-center">
-                    <p className="text-[--muted] italic text-[15px]">
-                      Compilation reel coming soon
-                    </p>
+                  <div className="max-w-[800px] mx-auto space-y-4">
+                    <iframe
+                      style={{ borderRadius: "12px" }}
+                      src="https://open.spotify.com/embed/show/2g6xpGERssgYAX0uMgK9zl?utm_source=generator&theme=0"
+                      width="100%"
+                      height="352"
+                      frameBorder="0"
+                      allowFullScreen
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="lazy"
+                      title="Burn the It Girl on Spotify"
+                    />
                   </div>
                 </div>
               </div>
@@ -453,7 +449,7 @@ export default function Home() {
 
       {/* ============ FOOTER ============ */}
       <footer className="py-6 px-4 text-[13px] text-[--muted] text-center italic border-t border-[--rule]">
-        &copy; {new Date().getFullYear()} Tess Hezlep
+        &copy; {new Date().getFullYear()} Tess Kennedy Hezlep
       </footer>
 
       {/* ============ LIGHTBOX ============ */}
