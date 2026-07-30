@@ -97,7 +97,7 @@ export default function Home() {
           <div className="page-enter">
             <div className="max-w-[1120px] mx-auto px-5 py-14 md:py-16">
               {/* Hero */}
-              <div className="grid md:grid-cols-[minmax(260px,410px)_minmax(0,1fr)] gap-[clamp(2rem,5vw,5rem)] items-center">
+              <div className="grid md:grid-cols-[minmax(300px,480px)_minmax(0,1fr)] gap-[clamp(2rem,5vw,5rem)] items-center">
                 {/* Portrait */}
                 <div className="relative max-w-[250px] md:max-w-none mx-auto md:mx-0">
                   <div className="absolute inset-[18px_-18px_-18px_18px] bg-[--rose] -z-10 opacity-40" />
@@ -119,15 +119,13 @@ export default function Home() {
                     Actor &middot; Writer &middot; Devoted Hostess
                   </p>
                   <h1
-                    className="text-[clamp(54px,8.8vw,104px)] font-normal tracking-[-0.055em] text-[--ink] m-0 mb-1.5 leading-[0.92]"
+                    className="text-[clamp(42px,6vw,72px)] font-normal tracking-[-0.055em] text-[--ink] m-0 mb-1.5 leading-[0.92]"
                     style={{
                       fontFamily:
                         "var(--font-libre), Baskerville, 'Times New Roman', serif",
                     }}
                   >
-                    Tess
-                    <br />
-                    Kennedy
+                    Tess Kennedy
                     <br />
                     Hezlep
                   </h1>
